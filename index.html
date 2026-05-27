@@ -20,656 +20,303 @@
     --serif: 'DM Serif Display', serif;
     --sans: 'Lato', sans-serif;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 3rem;
-    height: 64px;
-    background: rgba(250,250,248,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--rule);
-  }
-  .nav-logo {
-    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em;
-    color: var(--ink); text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
-  .nav-links a {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-soft); text-decoration: none;
-    transition: color 0.2s;
-  }
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+  .nav-logo { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 120px 3rem 80px;
-    border-bottom: 1px solid var(--rule);
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: 0; right: 0; bottom: 0;
-    width: 42%;
-    background: repeating-linear-gradient(
-      0deg, transparent, transparent 39px, var(--rule) 39px, var(--rule) 40px
-    ),
-    repeating-linear-gradient(
-      90deg, transparent, transparent 39px, var(--rule) 39px, var(--rule) 40px
-    );
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .hero-tag {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 1.6rem;
-    opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
-  }
-  .hero h1 {
-    font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem);
-    font-weight: 400; line-height: 1.05;
-    max-width: 700px;
-    opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
-  }
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 3rem 80px; border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 42%; background: repeating-linear-gradient(0deg, transparent, transparent 39px, var(--rule) 39px, var(--rule) 40px), repeating-linear-gradient(90deg, transparent, transparent 39px, var(--rule) 39px, var(--rule) 40px); opacity: 0.5; pointer-events: none; }
+  .hero-tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.7s 0.1s forwards; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 400; line-height: 1.05; max-width: 700px; opacity: 0; animation: fadeUp 0.7s 0.25s forwards; }
   .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero-sub {
-    margin-top: 2rem; max-width: 480px;
-    font-size: 1.05rem; color: var(--ink-soft); font-weight: 300;
-    line-height: 1.7;
-    opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
-  }
-  .hero-cta {
-    margin-top: 2.8rem; display: flex; gap: 1.2rem; align-items: center;
-    opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 0.8rem 1.6rem;
-    text-decoration: none; transition: all 0.2s;
-  }
-  .btn-primary {
-    background: var(--ink); color: #fff; border: 1px solid var(--ink);
-  }
+  .hero-sub { margin-top: 2rem; max-width: 480px; font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; line-height: 1.7; opacity: 0; animation: fadeUp 0.7s 0.4s forwards; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; opacity: 0; animation: fadeUp 0.7s 0.5s forwards; }
+  .hero-pill { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid var(--rule); color: var(--ink-soft); }
+  .hero-cta { margin-top: 2.4rem; display: flex; gap: 1.2rem; align-items: center; opacity: 0; animation: fadeUp 0.7s 0.55s forwards; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.8rem 1.6rem; text-decoration: none; transition: all 0.2s; }
+  .btn-primary { background: var(--ink); color: #fff; border: 1px solid var(--ink); }
   .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
   .btn-ghost { color: var(--ink); border: 1px solid var(--rule); }
   .btn-ghost:hover { border-color: var(--ink); }
+  .hero-scroll { position: absolute; bottom: 2.5rem; left: 3rem; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); display: flex; align-items: center; gap: 0.8rem; }
+  .hero-scroll::before { content: ''; display: block; width: 32px; height: 1px; background: var(--ink-faint); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 3rem;
-    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--ink-faint);
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .hero-scroll::before {
-    content: ''; display: block; width: 32px; height: 1px; background: var(--ink-faint);
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section { padding: 7rem 3rem; border-bottom: 1px solid var(--rule); }
-  .section-label {
-    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 0.6rem;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .section-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 60px;
-  }
-  .section-title {
-    font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 400; line-height: 1.15; margin-bottom: 1rem;
-  }
-  .section-desc {
-    font-size: 1rem; color: var(--ink-soft); max-width: 540px;
-    font-weight: 300; line-height: 1.75; margin-bottom: 3.5rem;
-  }
+  .section-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 60px; }
+  .section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; line-height: 1.15; margin-bottom: 1rem; }
+  .section-desc { font-size: 1rem; color: var(--ink-soft); max-width: 540px; font-weight: 300; line-height: 1.75; margin-bottom: 3.5rem; }
 
-  /* ── PROJECT CARD BASE ── */
-  .card {
-    background: var(--bg-card);
-    border: 1px solid var(--rule);
-    overflow: hidden;
-    transition: box-shadow 0.25s, transform 0.25s;
-  }
-  .card:hover {
-    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
-  }
+  /* CARD BASE */
+  .card { background: var(--bg-card); border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; }
+  .card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.08); transform: translateY(-2px); }
   .card-body { padding: 2rem 2.2rem 2.2rem; }
-  .card-index {
-    font-family: var(--mono); font-size: 0.65rem; color: var(--ink-faint);
-    letter-spacing: 0.12em; margin-bottom: 0.8rem;
-  }
-  .card-title {
-    font-family: var(--serif); font-size: 1.5rem; font-weight: 400;
-    line-height: 1.25; margin-bottom: 0.6rem;
-  }
-  .card-desc {
-    font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7;
-    font-weight: 300; margin-bottom: 1.4rem;
-  }
+  .card-index { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-faint); letter-spacing: 0.12em; margin-bottom: 0.8rem; }
+  .card-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.6rem; }
+  .card-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; font-weight: 300; margin-bottom: 1.4rem; }
   .card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
-  .tag {
-    font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--ink-soft);
-    padding: 0.25rem 0.7rem; border: 1px solid var(--rule);
-  }
-  .card-link {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    border-bottom: 1px solid var(--ink); padding-bottom: 0.1rem;
-    transition: color 0.2s, border-color 0.2s;
-  }
+  .tag { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); padding: 0.25rem 0.7rem; border: 1px solid var(--rule); }
+  .card-link { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--ink); padding-bottom: 0.1rem; transition: color 0.2s, border-color 0.2s; }
   .card-link:hover { color: var(--accent); border-color: var(--accent); }
   .card-link svg { width: 12px; height: 12px; transition: transform 0.2s; }
   .card-link:hover svg { transform: translate(2px, -2px); }
 
-  /* ── 01 · 3D VIEWER ── */
-  .viewer-layout {
-    display: grid; grid-template-columns: 1fr 380px; gap: 2.5rem; align-items: start;
-  }
-  .viewer-frame-wrap {
-    position: relative; background: #f2f2ef; border: 1px solid var(--rule);
-    overflow: hidden;
-  }
-  .viewer-frame-wrap iframe {
-    display: block; width: 100%; height: 540px; border: none;
-  }
-  .viewer-badge {
-    position: absolute; top: 1rem; left: 1rem;
-    background: rgba(255,255,255,0.9); backdrop-filter: blur(6px);
-    border: 1px solid var(--rule); padding: 0.35rem 0.75rem;
-    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-soft);
-    pointer-events: none;
-  }
-  .viewer-card { height: fit-content; }
-
-  /* ── 02 · PCB / SCHEMATIC ── */
+  /* 01 PCB */
   .pcb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .pcb-card .card-img {
-    background: #f5f5f2; height: 280px;
-    display: flex; align-items: center; justify-content: center;
-    border-bottom: 1px solid var(--rule); position: relative; overflow: hidden;
-  }
-  .pcb-placeholder {
-    display: flex; flex-direction: column; align-items: center; gap: 1rem;
-    color: var(--ink-faint);
-  }
-  .pcb-placeholder svg { width: 56px; height: 56px; opacity: 0.35; }
-  .pcb-placeholder span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .pcb-media { background: #111; position: relative; overflow: hidden; border: 1px solid var(--rule); }
+  .pcb-media video { display: block; width: 100%; height: 280px; object-fit: cover; }
+  .pcb-media-badge { position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.15); padding: 0.3rem 0.7rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); pointer-events: none; }
+  .pcb-schematic-preview { height: 280px; background: #fffdf8; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; transition: background 0.2s; }
+  .pcb-schematic-preview:hover { background: #fff9f0; }
+  .pcb-schematic-preview iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; pointer-events: none; }
+  .pcb-schematic-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,253,248,0.7); }
+  .pcb-schematic-overlay span { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); background: white; border: 1px solid var(--rule); padding: 0.5rem 1rem; }
 
-  /* PCB circuit art */
-  .pcb-art {
-    position: absolute; inset: 0;
-    opacity: 0.12;
-  }
+  /* 02 ASIC / GDS */
+  .viewer-layout { display: grid; grid-template-columns: 1fr 380px; gap: 2.5rem; align-items: start; }
+  .viewer-frame-wrap { position: relative; background: #f2f2ef; border: 1px solid var(--rule); overflow: hidden; }
+  .viewer-frame-wrap iframe { display: block; width: 100%; height: 540px; border: none; }
+  .viewer-badge { position: absolute; top: 1rem; left: 1rem; background: rgba(255,255,255,0.9); backdrop-filter: blur(6px); border: 1px solid var(--rule); padding: 0.35rem 0.75rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); pointer-events: none; }
 
-  /* ── 03 · VIDEO + PDF ── */
-  .media-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
-  .video-wrap {
-    position: relative; background: #111; overflow: hidden;
-    border: 1px solid var(--rule);
-  }
-  .video-wrap::before {
-    content: ''; display: block; padding-top: 56.25%;
-  }
-  .video-wrap iframe, .video-wrap .video-placeholder {
-    position: absolute; inset: 0; width: 100%; height: 100%; border: none;
-  }
-  .video-placeholder {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 1rem; background: #111; color: #555; cursor: pointer;
-    transition: background 0.2s;
-  }
+  /* 03 DRONE */
+  .drone-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin-bottom: 2rem; }
+  .video-wrap { position: relative; background: #111; overflow: hidden; border: 1px solid var(--rule); }
+  .video-wrap::before { content: ''; display: block; padding-top: 56.25%; }
+  .video-wrap iframe, .video-wrap .video-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .video-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; background: #111; color: #555; cursor: pointer; transition: background 0.2s; }
   .video-placeholder:hover { background: #1a1a1a; }
-  .play-btn {
-    width: 56px; height: 56px; border-radius: 50%;
-    border: 2px solid #444;
-    display: flex; align-items: center; justify-content: center;
-    transition: border-color 0.2s;
-  }
+  .play-btn { width: 56px; height: 56px; border-radius: 50%; border: 2px solid #444; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
   .video-placeholder:hover .play-btn { border-color: var(--accent); }
   .play-btn svg { width: 20px; height: 20px; fill: #888; margin-left: 3px; }
   .video-placeholder span { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #555; }
-
-  .pdf-card .card-img {
-    background: linear-gradient(135deg, #f9f5f0 0%, #f0ece5 100%);
-    height: 220px; display: flex; align-items: center; justify-content: center;
-    border-bottom: 1px solid var(--rule); position: relative;
-  }
+  .pdf-preview-card .card-img { background: linear-gradient(135deg, #f9f5f0 0%, #f0ece5 100%); height: 220px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--rule); cursor: pointer; transition: opacity 0.2s; }
+  .pdf-preview-card .card-img:hover { opacity: 0.88; }
   .pdf-icon { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
   .pdf-icon svg { width: 52px; height: 52px; color: var(--accent); opacity: 0.7; }
   .pdf-icon span { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
 
-  /* ── 04 · ARTICLES + GALLERY ── */
-  .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
-  .gallery-strip {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
-    margin-bottom: 2.5rem;
-  }
-  .gallery-img {
-    aspect-ratio: 4/3; background: #ebebE8;
-    border: 1px solid var(--rule); overflow: hidden; position: relative;
-    cursor: pointer; transition: opacity 0.2s;
-  }
-  .gallery-img:hover { opacity: 0.88; }
-  .gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .gallery-img .img-placeholder {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 0.5rem; color: var(--ink-faint);
-  }
-  .gallery-img .img-placeholder svg { width: 28px; height: 28px; opacity: 0.3; }
-  .gallery-img .img-placeholder span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  /* DRONE GALLERY */
+  .drone-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+  .drone-photo { aspect-ratio: 1; background: #f0f0ee; border: 1px solid var(--rule); overflow: hidden; cursor: pointer; transition: opacity 0.2s; }
+  .drone-photo:hover { opacity: 0.85; }
+  .drone-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* 04 PRESS */
   .article-links { display: flex; flex-direction: column; gap: 1px; }
-  .article-item {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.4rem 1.6rem;
-    background: var(--bg-card); border: 1px solid var(--rule);
-    text-decoration: none; color: var(--ink);
-    transition: background 0.18s;
-    gap: 1.5rem;
-  }
+  .article-item { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 1.6rem; background: var(--bg-card); border: 1px solid var(--rule); text-decoration: none; color: var(--ink); transition: background 0.18s; gap: 1.5rem; }
   .article-item:hover { background: var(--accent-light); }
   .article-item + .article-item { margin-top: -1px; }
   .article-meta { flex: 1; }
-  .article-source {
-    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;
-  }
-  .article-title-text {
-    font-size: 0.95rem; font-weight: 400; line-height: 1.4;
-  }
+  .article-source { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+  .article-title-text { font-size: 0.95rem; font-weight: 400; line-height: 1.4; }
   .article-arrow { color: var(--ink-faint); transition: color 0.2s, transform 0.2s; flex-shrink: 0; }
   .article-item:hover .article-arrow { color: var(--accent); transform: translate(2px, -2px); }
 
-  /* ── FOOTER ── */
-  footer {
-    padding: 3rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  /* 05 RESUME */
+  .resume-layout { display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: start; }
+  .resume-sidebar { position: sticky; top: 84px; }
+  .resume-meta-card { background: var(--bg-card); border: 1px solid var(--rule); padding: 2rem 2.2rem; }
+  .resume-name { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.4rem; }
+  .resume-role { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.6rem; }
+  .resume-detail { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+  .resume-detail-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .resume-detail-item svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; color: var(--ink-faint); }
+  .resume-actions { display: flex; flex-direction: column; gap: 0.7rem; }
+  .resume-btn-dl { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.2rem; background: var(--ink); color: #fff; border: 1px solid var(--ink); text-decoration: none; transition: all 0.2s; }
+  .resume-btn-dl:hover { background: var(--accent); border-color: var(--accent); }
+  .resume-btn-dl svg { width: 13px; height: 13px; }
+  .resume-btn-preview { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.2rem; background: transparent; color: var(--ink); border: 1px solid var(--rule); cursor: pointer; transition: all 0.2s; width: 100%; }
+  .resume-btn-preview:hover { border-color: var(--ink); }
+  .resume-viewer-wrap { border: 1px solid var(--rule); background: var(--bg-card); overflow: hidden; }
+  .resume-viewer-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.4rem; border-bottom: 1px solid var(--rule); background: var(--bg); }
+  .resume-viewer-toolbar span { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .resume-viewer-toolbar a { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+  .resume-pdf-frame { display: block; width: 100%; height: 860px; border: none; }
+  .resume-hidden { display: none; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(10,10,10,0.88); align-items: center; justify-content: center; padding: 2rem; }
+  .modal-overlay.open { display: flex; }
+  .modal-box { background: var(--bg-card); max-width: 1100px; width: 100%; border: 1px solid var(--rule); position: relative; overflow: hidden; max-height: 90vh; display: flex; flex-direction: column; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: 1px solid var(--rule); cursor: pointer; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: var(--ink-soft); transition: all 0.2s; z-index: 2; }
+  .modal-close:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .modal-pdf-frame { width: 100%; flex: 1; border: none; min-height: 80vh; }
+  .modal-photo { width: 100%; max-height: 85vh; object-fit: contain; display: block; background: #111; }
+  .modal-caption { padding: 1rem 1.5rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); border-top: 1px solid var(--rule); }
+
+  /* FOOTER */
+  footer { padding: 3rem; display: flex; align-items: center; justify-content: space-between; }
   .footer-name { font-family: var(--serif); font-size: 1.1rem; }
   .footer-links { display: flex; gap: 1.8rem; }
-  .footer-links a {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-soft); text-decoration: none;
-    transition: color 0.2s;
-  }
+  .footer-links a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent); }
   .footer-copy { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-faint); }
 
-  /* ── MODAL (lightbox) ── */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 999;
-    background: rgba(10,10,10,0.88); align-items: center; justify-content: center;
-    padding: 2rem;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal-box {
-    background: var(--bg-card); max-width: 920px; width: 100%;
-    border: 1px solid var(--rule); position: relative; overflow: hidden;
-  }
-  .modal-close {
-    position: absolute; top: 1rem; right: 1rem;
-    background: none; border: 1px solid var(--rule); cursor: pointer;
-    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-    color: var(--ink-soft); transition: all 0.2s; z-index: 2;
-  }
-  .modal-close:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .modal-inner { padding: 2.5rem; }
-  .modal-img { width: 100%; display: block; max-height: 70vh; object-fit: contain; background: #f5f5f2; }
-
-  /* ── RESPONSIVE ── */
-  /* ── 05 · RESUME ── */
-  .resume-layout {
-    display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: start;
-  }
-  .resume-sidebar { position: sticky; top: 84px; }
-  .resume-meta-card {
-    background: var(--bg-card); border: 1px solid var(--rule);
-    padding: 2rem 2.2rem;
-  }
-  .resume-name {
-    font-family: var(--serif); font-size: 1.5rem; font-weight: 400;
-    line-height: 1.2; margin-bottom: 0.4rem;
-  }
-  .resume-role {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 1.6rem;
-  }
-  .resume-detail {
-    display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem;
-  }
-  .resume-detail-item {
-    display: flex; align-items: flex-start; gap: 0.7rem;
-    font-size: 0.85rem; color: var(--ink-soft);
-  }
-  .resume-detail-item svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; color: var(--ink-faint); }
-  .resume-actions { display: flex; flex-direction: column; gap: 0.7rem; }
-  .resume-btn-dl {
-    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 0.75rem 1.2rem;
-    background: var(--ink); color: #fff; border: 1px solid var(--ink);
-    text-decoration: none; transition: all 0.2s; cursor: pointer;
-  }
-  .resume-btn-dl:hover { background: var(--accent); border-color: var(--accent); }
-  .resume-btn-dl svg { width: 13px; height: 13px; }
-  .resume-btn-preview {
-    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
-    text-transform: uppercase; padding: 0.75rem 1.2rem;
-    background: transparent; color: var(--ink); border: 1px solid var(--rule);
-    cursor: pointer; transition: all 0.2s; width: 100%;
-  }
-  .resume-btn-preview:hover { border-color: var(--ink); }
-  .resume-btn-preview svg { width: 13px; height: 13px; }
-
-  /* PDF embed area */
-  .resume-viewer-wrap {
-    border: 1px solid var(--rule); background: var(--bg-card); overflow: hidden;
-  }
-  .resume-viewer-toolbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.75rem 1.4rem;
-    border-bottom: 1px solid var(--rule);
-    background: var(--bg);
-  }
-  .resume-viewer-toolbar span {
-    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--ink-faint);
-  }
-  .resume-viewer-toolbar a {
-    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--accent); text-decoration: none;
-    display: flex; align-items: center; gap: 0.4rem;
-  }
-  .resume-viewer-toolbar a svg { width: 11px; height: 11px; }
-  .resume-pdf-frame {
-    display: block; width: 100%; height: 780px; border: none;
-    background: #f5f5f2;
-  }
-  .resume-pdf-placeholder {
-    height: 780px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 1.2rem;
-    background: #f9f9f7; color: var(--ink-faint);
-  }
-  .resume-pdf-placeholder svg { width: 52px; height: 52px; opacity: 0.25; }
-  .resume-pdf-placeholder p {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em;
-    text-transform: uppercase; text-align: center; max-width: 280px; line-height: 1.8;
-  }
-  .resume-pdf-placeholder .set-url-btn {
-    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
-    text-transform: uppercase; padding: 0.6rem 1.2rem;
-    background: var(--ink); color: #fff; border: none; cursor: pointer;
-    transition: background 0.2s; margin-top: 0.4rem;
-  }
-  .resume-pdf-placeholder .set-url-btn:hover { background: var(--accent); }
-
+  /* RESPONSIVE */
   @media (max-width: 1000px) {
     .resume-layout { grid-template-columns: 1fr; }
     .resume-sidebar { position: static; }
   }
-
   @media (max-width: 900px) {
     nav { padding: 0 1.5rem; }
-    .nav-links { gap: 1.4rem; }
     section { padding: 5rem 1.5rem; }
     .hero { padding: 110px 1.5rem 60px; }
+    .hero::before { display: none; }
     .viewer-layout { grid-template-columns: 1fr; }
     .pcb-grid { grid-template-columns: 1fr; }
-    .media-layout { grid-template-columns: 1fr; }
-    .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    .drone-layout { grid-template-columns: 1fr; }
+    .drone-gallery { grid-template-columns: repeat(2, 1fr); }
     footer { flex-direction: column; gap: 1.5rem; text-align: center; }
-    .hero::before { display: none; }
+    #press > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
   }
   @media (max-width: 600px) {
     .nav-links { display: none; }
-    .gallery-strip { grid-template-columns: 1fr 1fr; }
-    .gallery-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .drone-gallery { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ── -->
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">PT / Portfolio</a>
   <ul class="nav-links">
-    <li><a href="#ic-design">IC Design</a></li>
     <li><a href="#pcb">PCB Design</a></li>
-    <li><a href="#video">Research</a></li>
-    <li><a href="#press">Press</a></li>
+    <li><a href="#ic-design">IC Design</a></li>
+    <li><a href="#drone">UAV Project</a></li>
+    <li><a href="#press">Solar EV</a></li>
     <li><a href="#resume">Résumé</a></li>
-    <li><a href="mailto:pavit@example.com">Contact</a></li>
+    <li><a href="mailto:pavit.h.thakur@gmail.com">Contact</a></li>
   </ul>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <p class="hero-tag">Electrical Engineering Design Portfolio</p>
   <h1>Pavit<br><em>Thakur</em></h1>
-  <p class="hero-sub">
-    From silicon to system — designing circuits, chips, and everything in between.
-    This portfolio documents projects spanning custom IC layout, PCB design, and embedded research.
-  </p>
+  <p class="hero-sub">Texas A&M EE — building from silicon to system. PCB design, custom ASICs, FPV drones, and embedded systems.</p>
+  <div class="hero-pills">
+    <span class="hero-pill">Altium Designer</span>
+    <span class="hero-pill">SKY130 ASIC</span>
+    <span class="hero-pill">Verilog HDL</span>
+    <span class="hero-pill">FPV / UAV</span>
+    <span class="hero-pill">Texas A&M — BS EE</span>
+    <span class="hero-pill">Dean's Honor Roll</span>
+  </div>
   <div class="hero-cta">
-    <a href="#ic-design" class="btn btn-primary">View Projects ↓</a>
-    <a href="mailto:pavit@example.com" class="btn btn-ghost">Get in Touch</a>
+    <a href="#pcb" class="btn btn-primary">View Projects ↓</a>
+    <a href="mailto:pavit.h.thakur@gmail.com" class="btn btn-ghost">Get in Touch</a>
   </div>
   <div class="hero-scroll">Scroll to explore</div>
 </section>
 
-<!-- ── 01 · IC / GDS VIEWER ── -->
-<section id="ic-design">
+<!-- 01 PCB DESIGN -->
+<section id="pcb">
   <p class="section-label">01</p>
-  <h2 class="section-title">Integrated Circuit Design</h2>
-  <p class="section-desc">
-    Custom ASIC layout submitted to TinyTapeout — a collaborative chip shuttle program.
-    Explore the GDS geometry in the live 3D viewer below.
-  </p>
+  <h2 class="section-title">PCB & Schematic Design</h2>
+  <p class="section-desc">Designed and soldered a 2-layer Distributed Control Systems PCB for Texas A&M Solar Car Racing — integrating CAN-BUS communication, throttle, SPI, cruise control, and lighting IO in Altium Designer.</p>
 
-  <div class="viewer-layout">
-    <!-- Live viewer -->
-    <div class="viewer-frame-wrap">
-      <div class="viewer-badge">Live GDS·GLTF Viewer</div>
-      <iframe
-        src="https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://shuttle-assets.tinytapeout.com/tt09/tt_um_led_matrix_ayla_lin/tt_um_led_matrix_ayla_lin.gds.gltf"
-        allowfullscreen
-        loading="lazy"
-        title="GDS 3D Viewer — LED Matrix IC"
-      ></iframe>
+  <div class="pcb-grid">
+    <!-- Schematic card -->
+    <div class="card">
+      <div class="pcb-schematic-preview" onclick="openSchematic()">
+        <iframe src="schematic.pdf" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="pcb-schematic-overlay">
+          <span>Click to expand schematic</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-index">Project 01a — Altium Designer</p>
+        <h3 class="card-title">DCS Board Schematic</h3>
+        <p class="card-desc">Full schematic for the Solar Car Distributed Control Systems board — NUCLEO-F303K8 microcontroller, CAN-BUS transceiver (MCP2562), NMOSFETs for load switching, oscillating light timer circuit, throttle conditioning, and SPI header.</p>
+        <div class="card-tags">
+          <span class="tag">Altium Designer</span>
+          <span class="tag">STM32 / NUCLEO</span>
+          <span class="tag">CAN-BUS</span>
+          <span class="tag">TLC555CP Timer</span>
+          <span class="tag">NMOSFET</span>
+        </div>
+        <a href="#" class="card-link" onclick="openSchematic(); return false;">
+          View Full Schematic
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Sidebar card -->
-    <div class="card viewer-card">
+    <!-- PCB 3D video card -->
+    <div class="card">
+      <div class="pcb-media">
+        <video autoplay muted loop playsinline>
+          <source src="pcb_3d.mp4" type="video/mp4">
+        </video>
+        <div class="pcb-media-badge">Altium 3D View</div>
+      </div>
       <div class="card-body">
-        <p class="card-index">Project 01 — TinyTapeout 09</p>
-        <h3 class="card-title">LED Matrix Controller IC</h3>
-        <p class="card-desc">
-          A custom digital IC designed in SKY130 process node and submitted via the TinyTapeout shuttle.
-          The chip implements a programmable LED matrix controller with shift-register input and configurable brightness.
-          Layout and verification performed in KLayout; PDK cells from SkyWater.
-        </p>
+        <p class="card-index">Project 01b — Altium Designer</p>
+        <h3 class="card-title">PCB 3D Layout</h3>
+        <p class="card-desc">2-layer board routed in Altium — controlled trace impedance for CAN differential pair, proper ground pours, and component placement optimized for the solar car's packaging constraints.</p>
+        <div class="card-tags">
+          <span class="tag">Altium Designer</span>
+          <span class="tag">2-Layer PCB</span>
+          <span class="tag">CAN Differential Pair</span>
+          <span class="tag">Ground Pour</span>
+          <span class="tag">DRC Clean</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ASIC / GDS VIEWER -->
+<section id="ic-design">
+  <p class="section-label">02</p>
+  <h2 class="section-title">Integrated Circuit Design</h2>
+  <p class="section-desc">Custom ASIC submitted to TinyTapeout 09 — designed at MIT Beaver Works Summer Institute. Implemented in SKY130 open-source PDK with a 30% power reduction through custom Verilog SPI design. Explore the live GDS geometry below.</p>
+
+  <div class="viewer-layout">
+    <div class="viewer-frame-wrap">
+      <div class="viewer-badge">Live GDS · GLTF Viewer</div>
+      <iframe src="https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://shuttle-assets.tinytapeout.com/tt09/tt_um_led_matrix_ayla_lin/tt_um_led_matrix_ayla_lin.gds.gltf" allowfullscreen loading="lazy" title="GDS 3D Viewer — LED Matrix IC"></iframe>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-index">Project 02 — TinyTapeout 09 / MIT BWSI</p>
+        <h3 class="card-title">LED Matrix Controller ASIC</h3>
+        <p class="card-desc">Custom digital IC designed in the SKY130 process node as part of MIT Beaver Works Summer Institute. The chip implements energy-efficient LED matrix control with a custom Verilog SPI interface — achieving a 30% power reduction versus baseline. Full RTL-to-GDSII flow executed in OpenLane.</p>
         <div class="card-tags">
           <span class="tag">SKY130 PDK</span>
-          <span class="tag">GDS Layout</span>
-          <span class="tag">KLayout</span>
+          <span class="tag">Verilog HDL</span>
+          <span class="tag">OpenLane</span>
+          <span class="tag">RTL-to-GDSII</span>
           <span class="tag">TinyTapeout</span>
-          <span class="tag">Digital Logic</span>
+          <span class="tag">MIT BWSI</span>
         </div>
         <a href="https://legacy-gltf.gds-viewer.tinytapeout.com/?model=https://shuttle-assets.tinytapeout.com/tt09/tt_um_led_matrix_ayla_lin/tt_um_led_matrix_ayla_lin.gds.gltf" target="_blank" rel="noopener" class="card-link">
           Open Full Viewer
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 10L10 2M4 2h6v6"/>
-          </svg>
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── 02 · PCB DESIGN ── -->
-<section id="pcb">
-  <p class="section-label">02</p>
-  <h2 class="section-title">PCB & Schematic Design</h2>
-  <p class="section-desc">
-    Multilayer board design in Altium Designer — from schematic capture through
-    layout, DRC, and fabrication outputs.
-  </p>
-
-  <div class="pcb-grid">
-
-    <!-- Schematic card -->
-    <div class="card pcb-card" id="schematic-card">
-      <div class="card-img" onclick="openModal('schematic')">
-        <!-- PCB trace art SVG background -->
-        <svg class="pcb-art" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <line x1="40" y1="60" x2="180" y2="60" stroke="#c8432a" stroke-width="2"/>
-          <line x1="180" y1="60" x2="180" y2="120" stroke="#c8432a" stroke-width="2"/>
-          <line x1="80" y1="60" x2="80" y2="180" stroke="#c8432a" stroke-width="2"/>
-          <circle cx="80" cy="60" r="5" fill="#c8432a"/>
-          <line x1="240" y1="40" x2="320" y2="40" stroke="#c8432a" stroke-width="2"/>
-          <line x1="320" y1="40" x2="320" y2="200" stroke="#c8432a" stroke-width="2"/>
-          <rect x="140" y="100" width="80" height="50" stroke="#0f0f0f" stroke-width="1.5" fill="none"/>
-          <rect x="240" y="100" width="60" height="40" stroke="#0f0f0f" stroke-width="1.5" fill="none"/>
-          <line x1="220" y1="125" x2="240" y2="125" stroke="#0f0f0f" stroke-width="1.5"/>
-          <circle cx="180" cy="180" r="20" stroke="#0f0f0f" stroke-width="1.5" fill="none"/>
-          <line x1="160" y1="180" x2="100" y2="180" stroke="#0f0f0f" stroke-width="1.5"/>
-          <line x1="200" y1="180" x2="260" y2="180" stroke="#0f0f0f" stroke-width="1.5"/>
-          <line x1="260" y1="180" x2="260" y2="140" stroke="#0f0f0f" stroke-width="1.5"/>
-          <rect x="60" y="170" width="40" height="20" stroke="#0f0f0f" stroke-width="1.5" fill="none"/>
-        </svg>
-        <div class="pcb-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="6" y="6" width="36" height="36" rx="2"/>
-            <path d="M16 16h4M28 16h4M16 24h16M16 32h8"/>
-          </svg>
-          <span>Click to view schematic</span>
-        </div>
-      </div>
-      <div class="card-body">
-        <p class="card-index">Project 02a — Altium Designer</p>
-        <h3 class="card-title">Circuit Schematic</h3>
-        <p class="card-desc">
-          Full schematic capture in Altium — power regulation, microcontroller, sensor front-end,
-          and communication interfaces. Hierarchical sheet design with comprehensive BOM.
-        </p>
-        <div class="card-tags">
-          <span class="tag">Altium Designer</span>
-          <span class="tag">Schematic Capture</span>
-          <span class="tag">Hierarchical Design</span>
-        </div>
-        <a href="#" class="card-link" onclick="openModal('schematic'); return false;">
-          View Schematic
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 10L10 2M4 2h6v6"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- PCB Layout card -->
-    <div class="card pcb-card" id="pcb-card">
-      <div class="card-img" onclick="openModal('pcb')">
-        <svg class="pcb-art" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="30" y="30" width="340" height="220" rx="4" stroke="#c8432a" stroke-width="1.5" fill="none"/>
-          <!-- vias -->
-          <circle cx="60" cy="60" r="6" stroke="#0f0f0f" stroke-width="1.2" fill="none"/>
-          <circle cx="60" cy="60" r="3" fill="#0f0f0f"/>
-          <circle cx="340" cy="60" r="6" stroke="#0f0f0f" stroke-width="1.2" fill="none"/>
-          <circle cx="340" cy="60" r="3" fill="#0f0f0f"/>
-          <circle cx="60" cy="220" r="6" stroke="#0f0f0f" stroke-width="1.2" fill="none"/>
-          <circle cx="60" cy="220" r="3" fill="#0f0f0f"/>
-          <circle cx="340" cy="220" r="6" stroke="#0f0f0f" stroke-width="1.2" fill="none"/>
-          <circle cx="340" cy="220" r="3" fill="#0f0f0f"/>
-          <!-- IC -->
-          <rect x="160" y="100" width="80" height="80" rx="2" stroke="#c8432a" stroke-width="1.5" fill="none"/>
-          <line x1="200" y1="100" x2="200" y2="180" stroke="#c8432a" stroke-width="0.5" stroke-dasharray="4 4"/>
-          <line x1="160" y1="140" x2="240" y2="140" stroke="#c8432a" stroke-width="0.5" stroke-dasharray="4 4"/>
-          <!-- traces -->
-          <path d="M80 140 H 160" stroke="#c8432a" stroke-width="1.5" fill="none"/>
-          <path d="M240 140 H 320" stroke="#c8432a" stroke-width="1.5" fill="none"/>
-          <path d="M200 80 V 100" stroke="#c8432a" stroke-width="1.5" fill="none"/>
-          <path d="M200 180 V 200 H 120 V 240" stroke="#c8432a" stroke-width="1.5" fill="none"/>
-          <!-- passives -->
-          <rect x="70" y="132" width="20" height="16" rx="1" fill="#0f0f0f" opacity="0.5"/>
-          <rect x="310" y="132" width="20" height="16" rx="1" fill="#0f0f0f" opacity="0.5"/>
-          <rect x="192" y="66" width="16" height="22" rx="1" fill="#0f0f0f" opacity="0.5"/>
-        </svg>
-        <div class="pcb-placeholder">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="4" y="4" width="40" height="40" rx="3"/>
-            <circle cx="12" cy="12" r="3"/>
-            <circle cx="36" cy="12" r="3"/>
-            <circle cx="12" cy="36" r="3"/>
-            <circle cx="36" cy="36" r="3"/>
-            <rect x="18" y="18" width="12" height="12"/>
-          </svg>
-          <span>Click to view PCB layout</span>
-        </div>
-      </div>
-      <div class="card-body">
-        <p class="card-index">Project 02b — Altium Designer</p>
-        <h3 class="card-title">PCB Layout</h3>
-        <p class="card-desc">
-          4-layer board with controlled impedance traces, EMI considerations, and thermal management.
-          DRC-clean with full Gerber and ODB++ fabrication outputs.
-        </p>
-        <div class="card-tags">
-          <span class="tag">Altium Designer</span>
-          <span class="tag">4-Layer PCB</span>
-          <span class="tag">Signal Integrity</span>
-          <span class="tag">DRC</span>
-        </div>
-        <a href="#" class="card-link" onclick="openModal('pcb'); return false;">
-          View Layout
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 10L10 2M4 2h6v6"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 03 · VIDEO + PDF ── -->
-<section id="video">
+<!-- 03 DRONE / UAV -->
+<section id="drone">
   <p class="section-label">03</p>
-  <h2 class="section-title">Research & Documentation</h2>
-  <p class="section-desc">
-    Video walkthrough and accompanying technical report covering design methodology,
-    simulation results, and experimental validation.
-  </p>
+  <h2 class="section-title">Drone Challenge (UAV)</h2>
+  <p class="section-desc">Designed and built a custom FPV racing drone from scratch for the TSA Texas State Competition — earning 1st place. Integrated flight controller stack, ESC, VTX, FPV camera, 3D-printed claw mechanism, and custom Arduino-controlled gripper system.</p>
 
-  <div class="media-layout">
+  <div class="drone-layout">
     <!-- YouTube video -->
     <div>
       <div class="video-wrap" id="video-container">
@@ -680,16 +327,11 @@
           <span>Play Project Video</span>
         </div>
       </div>
-      <div style="padding: 1.2rem 0 0;">
-        <p style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">
-          YouTube — Replace VIDEO_ID below with your video ID
-        </p>
-      </div>
     </div>
 
-    <!-- PDF document -->
-    <div class="card pdf-card">
-      <div class="card-img">
+    <!-- PDF portfolio card -->
+    <div class="card pdf-preview-card">
+      <div class="card-img" onclick="openDronePDF()">
         <div class="pdf-icon">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
             <rect x="8" y="2" width="28" height="36" rx="2"/>
@@ -699,317 +341,315 @@
             <line x1="14" y1="16" x2="22" y2="16"/>
             <path d="M10 40c0 3.3 2.7 6 6 6h20c3.3 0 6-2.7 6-6v-8H10v8z" stroke="var(--accent)"/>
           </svg>
-          <span>Technical Report / PDF</span>
+          <span>Technical Portfolio — Click to View</span>
         </div>
       </div>
       <div class="card-body">
-        <p class="card-index">Project 03b — Documentation</p>
-        <h3 class="card-title">Technical Report</h3>
-        <p class="card-desc">
-          Detailed write-up covering design objectives, theoretical background, simulation methodology,
-          hardware validation, and conclusions. Replace the link below with your PDF URL.
-        </p>
+        <p class="card-index">Project 03b — TSA Drone Challenge 2025</p>
+        <h3 class="card-title">Technical Portfolio Document</h3>
+        <p class="card-desc">Full documentation including photo log, wiring schematic, Betaflight programming notes, engineered drawings of all components, bill of materials, and plan of work log.</p>
         <div class="card-tags">
-          <span class="tag">Technical Report</span>
-          <span class="tag">PDF</span>
-          <span class="tag">Documentation</span>
+          <span class="tag">SpeedyBee F405</span>
+          <span class="tag">Betaflight</span>
+          <span class="tag">Arduino UNO</span>
+          <span class="tag">3D Printing</span>
+          <span class="tag">FPV / VTX</span>
+          <span class="tag">1st Place — TSA TX</span>
         </div>
-        <a href="#" class="card-link">
-          Download Report (PDF)
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M6 2v7M3 7l3 3 3-3M2 11h8"/>
-          </svg>
-        </a>
+        <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#" class="card-link" onclick="openDronePDF(); return false;">
+            View Portfolio
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
+          </a>
+          <a href="drone_portfolio.pdf" download class="card-link" style="margin-left: 1rem;">
+            Download PDF
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1v7M3 6l3 3 3-3M1 11h10"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Photo gallery from the PDF -->
+  <p style="font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1rem;">Build Photo Log</p>
+  <div class="drone-gallery" id="drone-gallery">
+    <!-- Photos extracted from PDF pages 3-9 as descriptions; using PDF page screenshots -->
+    <div class="drone-photo" onclick="openDronePhoto(0)" style="background:#e8e4de; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Parts & Assembly</p>
+      </div>
+    </div>
+    <div class="drone-photo" onclick="openDronePhoto(1)" style="background:#e0dcd6; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">FC Stack</p>
+      </div>
+    </div>
+    <div class="drone-photo" onclick="openDronePhoto(2)" style="background:#e4e0da; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Soldering</p>
+      </div>
+    </div>
+    <div class="drone-photo" onclick="openDronePhoto(3)" style="background:#dcd8d2; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Claw Mechanism</p>
+      </div>
+    </div>
+    <div class="drone-photo" onclick="openDronePhoto(4)" style="background:#e2deda; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Betaflight Config</p>
+      </div>
+    </div>
+    <div class="drone-photo" onclick="openDronePhoto(5)" style="background:#dedad4; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Final Build</p>
+      </div>
+    </div>
+    <div class="drone-photo" onclick="openDronePhoto(6)" style="background:#e0dcd8; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Flight Testing</p>
+      </div>
+    </div>
+    <div class="drone-photo" onclick="openDronePhoto(7)" style="background:#d8d4d0; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; padding:1rem;">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
+        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Competition</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-family: var(--mono); font-size: 0.62rem; color: var(--ink-faint); margin-top: 1rem; letter-spacing: 0.06em;">↑ Replace placeholders: upload real build photos to your GitHub repo and update the <code>src</code> attributes in the HTML. Full build log is in the PDF above.</p>
 </section>
 
-<!-- ── 04 · PRESS / ARTICLES ── -->
+<!-- 04 SOLAR EV CHARGER -->
 <section id="press">
   <p class="section-label">04</p>
-  <h2 class="section-title">Press & Articles</h2>
-  <p class="section-desc">
-    Media coverage, published articles, and project features.
-  </p>
+  <h2 class="section-title">Solar-Powered EV Charger</h2>
+  <p class="section-desc">Engineered a solar-powered Tesla Level 2 EV charger in a three-person team — integrating eight 240W solar panels, a 48V battery system, an AC/DC inverter, and a 2500W charge controller delivering 2.4 kWh of energy. Coordinated local sponsor outreach resulting in a $4,000 technical supply donation. Featured by Fort Bend ISD and on Instagram.</p>
 
-  <!-- Photo gallery -->
-  <div class="gallery-strip">
-    <div class="gallery-img" onclick="openGalleryModal(0)">
-      <div class="img-placeholder">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="26" height="26" rx="2"/>
-          <circle cx="11" cy="11" r="3"/>
-          <path d="M3 22l7-7 5 5 4-4 9 9"/>
-        </svg>
-        <span>Photo 01</span>
-      </div>
-    </div>
-    <div class="gallery-img" onclick="openGalleryModal(1)">
-      <div class="img-placeholder">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="26" height="26" rx="2"/>
-          <circle cx="11" cy="11" r="3"/>
-          <path d="M3 22l7-7 5 5 4-4 9 9"/>
-        </svg>
-        <span>Photo 02</span>
-      </div>
-    </div>
-    <div class="gallery-img" onclick="openGalleryModal(2)">
-      <div class="img-placeholder">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="26" height="26" rx="2"/>
-          <circle cx="11" cy="11" r="3"/>
-          <path d="M3 22l7-7 5 5 4-4 9 9"/>
-        </svg>
-        <span>Photo 03</span>
-      </div>
-    </div>
-    <div class="gallery-img" onclick="openGalleryModal(3)">
-      <div class="img-placeholder">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="26" height="26" rx="2"/>
-          <circle cx="11" cy="11" r="3"/>
-          <path d="M3 22l7-7 5 5 4-4 9 9"/>
-        </svg>
-        <span>Photo 04</span>
-      </div>
-    </div>
-    <div class="gallery-img" onclick="openGalleryModal(4)">
-      <div class="img-placeholder">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="26" height="26" rx="2"/>
-          <circle cx="11" cy="11" r="3"/>
-          <path d="M3 22l7-7 5 5 4-4 9 9"/>
-        </svg>
-        <span>Photo 05</span>
-      </div>
-    </div>
-    <div class="gallery-img" onclick="openGalleryModal(5)">
-      <div class="img-placeholder">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="26" height="26" rx="2"/>
-          <circle cx="11" cy="11" r="3"/>
-          <path d="M3 22l7-7 5 5 4-4 9 9"/>
-        </svg>
-        <span>Photo 06</span>
-      </div>
-    </div>
-  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
 
-  <!-- Article links -->
-  <div class="article-links">
-    <a href="#" class="article-item">
-      <div class="article-meta">
-        <p class="article-source">Publication Name</p>
-        <p class="article-title-text">Article headline — replace with your real article title and link</p>
+    <!-- Project details card -->
+    <div class="card">
+      <div class="card-body" style="padding-top: 2.4rem;">
+        <p class="card-index">Project 04 — Level 2 Solar EV Charger</p>
+        <h3 class="card-title">System Overview</h3>
+        <p class="card-desc">Designed and built a grid-independent solar charging station capable of delivering Level 2 EV charging power. The system manages MPPT solar input, battery storage, AC inversion, and J1772-compatible charge delivery — all from eight rooftop solar panels.</p>
+        <div class="card-tags">
+          <span class="tag">8× 240W Solar Panels</span>
+          <span class="tag">48V Battery System</span>
+          <span class="tag">2500W Charge Controller</span>
+          <span class="tag">AC/DC Inverter</span>
+          <span class="tag">Level 2 Charging</span>
+          <span class="tag">2.4 kWh Output</span>
+        </div>
+        <!-- Specs grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); margin-bottom: 1.6rem;">
+          <div style="padding: 0.9rem 1rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.3rem;">Solar Input</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">1,920 W</p>
+          </div>
+          <div style="padding: 0.9rem 1rem; border-bottom: 1px solid var(--rule);">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.3rem;">Energy Storage</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">48V Battery</p>
+          </div>
+          <div style="padding: 0.9rem 1rem; border-right: 1px solid var(--rule);">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.3rem;">Charge Output</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">2.4 kWh</p>
+          </div>
+          <div style="padding: 0.9rem 1rem;">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.3rem;">Sponsorship</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">$4,000</p>
+          </div>
+        </div>
       </div>
-      <svg class="article-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M3 13L13 3M6 3h7v7"/>
-      </svg>
-    </a>
-    <a href="#" class="article-item">
-      <div class="article-meta">
-        <p class="article-source">Second Publication</p>
-        <p class="article-title-text">Another featured article — update this with your real content</p>
-      </div>
-      <svg class="article-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M3 13L13 3M6 3h7v7"/>
-      </svg>
-    </a>
-    <a href="#" class="article-item">
-      <div class="article-meta">
-        <p class="article-source">Third Source</p>
-        <p class="article-title-text">Third article or feature — link goes here</p>
-      </div>
-      <svg class="article-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M3 13L13 3M6 3h7v7"/>
-      </svg>
-    </a>
+    </div>
+
+    <!-- Social coverage cards stacked -->
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+      <!-- Instagram post -->
+      <a href="https://www.instagram.com/p/DLBMsWxorP9/" target="_blank" rel="noopener" class="card" style="text-decoration: none; display: block; transition: box-shadow 0.25s, transform 0.25s;">
+        <div style="background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); height: 6px;"></div>
+        <div class="card-body">
+          <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#dc2743" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#dc2743" stroke="none"/></svg>
+            <div>
+              <p style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">Instagram</p>
+              <p style="font-family: var(--mono); font-size: 0.75rem; color: var(--ink);">Solar EV Charger Feature</p>
+            </div>
+            <svg style="margin-left: auto; color: var(--ink-faint);" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12L12 2M5 2h7v7"/></svg>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300;">Solar-powered EV charger project feature — build photos, system overview, and team coverage.</p>
+          <p style="font-family: var(--mono); font-size: 0.65rem; color: var(--accent); margin-top: 0.8rem; letter-spacing: 0.06em;">View post →</p>
+        </div>
+      </a>
+
+      <!-- X / Fort Bend ISD post -->
+      <a href="https://x.com/FortBendISD/status/1935102656349094287" target="_blank" rel="noopener" class="card" style="text-decoration: none; display: block; transition: box-shadow 0.25s, transform 0.25s;">
+        <div style="background: #000; height: 6px;"></div>
+        <div class="card-body">
+          <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color: #000;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <div>
+              <p style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">X (Twitter)</p>
+              <p style="font-family: var(--mono); font-size: 0.75rem; color: var(--ink);">@FortBendISD</p>
+            </div>
+            <svg style="margin-left: auto; color: var(--ink-faint);" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12L12 2M5 2h7v7"/></svg>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--ink-soft); line-height: 1.65; font-weight: 300;">Fort Bend ISD featured the solar-powered EV charger project — district-level recognition of the engineering work and $4,000 sponsorship outcome.</p>
+          <p style="font-family: var(--mono); font-size: 0.65rem; color: var(--accent); margin-top: 0.8rem; letter-spacing: 0.06em;">View post →</p>
+        </div>
+      </a>
+
+    </div>
   </div>
 </section>
 
-<!-- ── 05 · RÉSUMÉ ── -->
+<!-- 05 RÉSUMÉ -->
 <section id="resume">
   <p class="section-label">05</p>
   <h2 class="section-title">Résumé</h2>
-  <p class="section-desc">
-    Electrical engineering background spanning IC design, PCB layout, embedded systems, and research.
-  </p>
+  <p class="section-desc">Electrical engineering background spanning IC design, PCB layout, embedded systems, FPV drones, and competitive robotics.</p>
 
   <div class="resume-layout">
-
-    <!-- Sidebar: meta + actions -->
     <div class="resume-sidebar">
       <div class="resume-meta-card">
         <h3 class="resume-name">Pavit Thakur</h3>
-        <p class="resume-role">Electrical Engineer</p>
+        <p class="resume-role">Electrical Engineer · Texas A&M</p>
         <div class="resume-detail">
           <div class="resume-detail-item">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z"/>
-              <circle cx="8" cy="6" r="1.5"/>
-            </svg>
-            Your City, State
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 5l7 5 7-5"/></svg>
+            pavit.h.thakur@gmail.com
           </div>
           <div class="resume-detail-item">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <rect x="1" y="3" width="14" height="10" rx="1.5"/>
-              <path d="M1 5l7 5 7-5"/>
-            </svg>
-            pavit@example.com
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 2h5l2 3-2.5 1.5c1 2 2.5 3.5 4.5 4.5L13 9l3 2v5a1 1 0 01-1 1C6 17 1 12 1 3a1 1 0 011-1z"/></svg>
+            (832) 616-1929
           </div>
           <div class="resume-detail-item">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M2 2h5l2 3-2.5 1.5c1 2 2.5 3.5 4.5 4.5L13 9l3 2v5a1 1 0 01-1 1C6 17 1 12 1 3a1 1 0 011-1z"/>
-            </svg>
-            +1 (555) 000-0000
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+            College Station, TX
+          </div>
+          <div class="resume-detail-item">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 1l1.5 3 3.5.5-2.5 2.5.5 3.5L8 9l-3 1.5.5-3.5L3 4.5 6.5 4z"/></svg>
+            GPA 3.81 · Dean's Honor Roll
           </div>
         </div>
         <div class="resume-actions">
-          <a href="#" id="resume-dl-btn" class="resume-btn-dl" download>
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M6 1v7M3 6l3 3 3-3M1 11h10"/>
-            </svg>
+          <a href="Pavit_Thakur_Resume.pdf" download class="resume-btn-dl">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1v7M3 6l3 3 3-3M1 11h10"/></svg>
             Download PDF
           </a>
           <button class="resume-btn-preview" onclick="toggleResumePreview()">
-            <svg id="preview-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="6" cy="6" r="2.5"/>
-              <path d="M1 6s2-4 5-4 5 4 5 4-2 4-5 4-5-4-5-4z"/>
-            </svg>
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="2.5"/><path d="M1 6s2-4 5-4 5 4 5 4-2 4-5 4-5-4-5-4z"/></svg>
             <span id="preview-label">Show Preview</span>
           </button>
         </div>
-
         <div style="margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--rule);">
           <p style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.8rem;">Skills</p>
           <div class="card-tags" style="margin-bottom:0;">
             <span class="tag">Altium</span>
-            <span class="tag">KLayout</span>
-            <span class="tag">SKY130</span>
-            <span class="tag">SPICE</span>
-            <span class="tag">FPGA</span>
-            <span class="tag">C / C++</span>
+            <span class="tag">Verilog</span>
+            <span class="tag">OpenLane</span>
             <span class="tag">Python</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">Signal Integrity</span>
-            <span class="tag">DRC / LVS</span>
+            <span class="tag">C++</span>
+            <span class="tag">FPGA</span>
+            <span class="tag">SolidWorks</span>
+            <span class="tag">Fusion 360</span>
+            <span class="tag">Betaflight</span>
+            <span class="tag">Docker</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Main: PDF viewer -->
     <div class="resume-viewer-wrap" id="resume-viewer-wrap">
       <div class="resume-viewer-toolbar">
         <span>Pavit_Thakur_Resume.pdf</span>
-        <a href="#" id="resume-toolbar-dl" download>
-          Open in new tab
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 10L10 2M4 2h6v6"/>
-          </svg>
-        </a>
+        <a href="Pavit_Thakur_Resume.pdf" target="_blank">Open in new tab ↗</a>
       </div>
-
-      <!-- Placeholder shown until PDF URL is set -->
-      <div class="resume-pdf-placeholder" id="resume-placeholder">
-        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
-          <rect x="8" y="2" width="28" height="36" rx="2"/>
-          <path d="M28 2v10h10"/>
-          <line x1="14" y1="20" x2="30" y2="20"/>
-          <line x1="14" y1="26" x2="30" y2="26"/>
-          <line x1="14" y1="32" x2="24" y2="32"/>
-        </svg>
-        <p>Paste your resume PDF URL into the<br><code style="font-family:var(--mono);font-size:0.7rem;background:var(--rule);padding:0.15rem 0.4rem;">RESUME_PDF_URL</code><br>variable at the top of the script block</p>
+      <iframe id="resume-iframe" class="resume-pdf-frame resume-hidden" src="Pavit_Thakur_Resume.pdf" title="Pavit Thakur — Résumé"></iframe>
+      <div id="resume-placeholder" style="height:300px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; background:#f9f9f7; color:var(--ink-faint);">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="8" y="2" width="28" height="36" rx="2"/><path d="M28 2v10h10"/><line x1="14" y1="20" x2="30" y2="20"/><line x1="14" y1="26" x2="30" y2="26"/><line x1="14" y1="32" x2="24" y2="32"/></svg>
+        <p style="font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;">Click "Show Preview" to load</p>
       </div>
-
-      <!-- Iframe shown when URL is set -->
-      <iframe id="resume-iframe" class="resume-pdf-frame" style="display:none;" title="Pavit Thakur — Résumé"></iframe>
     </div>
-
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
   <span class="footer-name">Pavit Thakur</span>
   <div class="footer-links">
-    <a href="mailto:pavit@example.com">Email</a>
+    <a href="mailto:pavit.h.thakur@gmail.com">Email</a>
+    <a href="https://github.com/pavit-thakur" target="_blank" rel="noopener">GitHub</a>
     <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
   </div>
-  <span class="footer-copy">© 2025 Pavit Thakur</span>
+  <span class="footer-copy">© 2026 Pavit Thakur</span>
 </footer>
 
-<!-- ── MODAL ── -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
-  <div class="modal-box">
+  <div class="modal-box" id="modal-box">
     <button class="modal-close" onclick="closeModal()">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M1 1l12 12M13 1L1 13"/>
-      </svg>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l12 12M13 1L1 13"/></svg>
     </button>
-    <div class="modal-inner" id="modal-inner"></div>
+    <div id="modal-inner" style="flex:1; display:flex; flex-direction:column;"></div>
   </div>
 </div>
 
 <script>
-  /* ── VIDEO LOADER ── */
-  const VIDEO_ID = 'dQw4w9WgXcQ'; // ← Replace with your YouTube video ID
-
+  // VIDEO
   function loadVideo() {
-    const container = document.getElementById('video-container');
-    container.innerHTML = `<iframe
-      src="https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      style="position:absolute;inset:0;width:100%;height:100%;border:none;"
-      title="Project Video"
-    ></iframe>`;
+    const c = document.getElementById('video-container');
+    c.innerHTML = `<iframe src="https://www.youtube.com/embed/rjoQNNhuAvY?autoplay=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;" title="FPV Drone Project Video"></iframe>`;
   }
 
-  /* ── MODAL ── */
-  function openModal(type) {
-    const inner = document.getElementById('modal-inner');
-    if (type === 'schematic') {
-      inner.innerHTML = `
-        <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;">Project 02a — Schematic</p>
-        <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:400;margin-bottom:1rem;">Circuit Schematic</h3>
-        <div style="background:#f5f5f2;width:100%;height:400px;display:flex;align-items:center;justify-content:center;border:1px solid var(--rule);margin-bottom:1.2rem;">
-          <p style="font-family:var(--mono);font-size:0.72rem;color:var(--ink-faint);letter-spacing:0.1em;text-transform:uppercase;">Replace with your Altium schematic image</p>
-        </div>
-        <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.7;">Add your schematic description here. Replace the placeholder above with an <code>&lt;img&gt;</code> tag pointing to your exported Altium schematic PNG/PDF.</p>
-      `;
-    } else if (type === 'pcb') {
-      inner.innerHTML = `
-        <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;">Project 02b — PCB Layout</p>
-        <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:400;margin-bottom:1rem;">PCB Layout</h3>
-        <div style="background:#f5f5f2;width:100%;height:400px;display:flex;align-items:center;justify-content:center;border:1px solid var(--rule);margin-bottom:1.2rem;">
-          <p style="font-family:var(--mono);font-size:0.72rem;color:var(--ink-faint);letter-spacing:0.1em;text-transform:uppercase;">Replace with your Altium PCB layout image</p>
-        </div>
-        <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.7;">Add your PCB layout description here. Replace the placeholder above with an <code>&lt;img&gt;</code> tag pointing to your exported PCB image.</p>
-      `;
-    }
-    document.getElementById('modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
+  // MODAL
+  function openSchematic() {
+    document.getElementById('modal-inner').innerHTML = `<iframe class="modal-pdf-frame" src="schematic.pdf" title="DCS Board Schematic"></iframe>`;
+    openModal();
   }
 
-  function openGalleryModal(index) {
-    const inner = document.getElementById('modal-inner');
-    inner.innerHTML = `
-      <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;">Gallery — Photo ${String(index+1).padStart(2,'0')}</p>
-      <div style="background:#f5f5f2;width:100%;min-height:340px;display:flex;align-items:center;justify-content:center;border:1px solid var(--rule);margin-bottom:1.2rem;">
-        <p style="font-family:var(--mono);font-size:0.72rem;color:var(--ink-faint);letter-spacing:0.1em;text-transform:uppercase;">Replace with your image — Photo ${index+1}</p>
+  function openDronePDF() {
+    document.getElementById('modal-inner').innerHTML = `<iframe class="modal-pdf-frame" src="drone_portfolio.pdf" title="Drone Challenge Portfolio"></iframe>`;
+    openModal();
+  }
+
+  const dronePhotoCaptions = [
+    'Parts & Assembly — all open source materials shipped and ready',
+    'Flight Controller Stack — SpeedyBee F405 V3 mounted on carbon-fiber frame',
+    'Soldering — capacitor on flight controller stack',
+    'Claw Mechanism — 3D modeled and printed grabber claw with DC motor',
+    'Betaflight Configuration — motor direction, ESC protocol, and flight modes',
+    'Final Build — 3D printed stilts & claw attached',
+    'Flight Testing — practicing takeoff and landing in horizon mode',
+    'Competition — Fort Worth, Texas · TSA 2025 · 1st Place'
+  ];
+
+  function openDronePhoto(i) {
+    document.getElementById('modal-inner').innerHTML = `
+      <div style="background:#111; display:flex; align-items:center; justify-content:center; min-height:300px; flex:1;">
+        <p style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#555;text-align:center;padding:2rem;">Upload build photos to your GitHub repo and replace<br>the placeholder divs with &lt;img src="photo.jpg"&gt; tags.</p>
       </div>
-      <p style="font-size:0.9rem;color:var(--ink-soft);">Add a caption or description for this photo here.</p>
+      <div class="modal-caption">${dronePhotoCaptions[i]}</div>
     `;
+    openModal();
+  }
+
+  function openModal() {
     document.getElementById('modal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
     document.getElementById('modal').classList.remove('open');
+    document.getElementById('modal-inner').innerHTML = '';
     document.body.style.overflow = '';
   }
 
@@ -1019,66 +659,33 @@
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  /* ── RESUME ── */
-  // ↓ Paste your hosted PDF URL here (Google Drive "preview" link, or direct .pdf URL)
-  const RESUME_PDF_URL = ''; // e.g. 'https://drive.google.com/file/d/YOUR_ID/preview'
-
+  // RESUME TOGGLE
   let previewOpen = false;
-
-  function initResume() {
-    if (!RESUME_PDF_URL) return;
-    const iframe = document.getElementById('resume-iframe');
-    const placeholder = document.getElementById('resume-placeholder');
-    // Pre-load but keep hidden until user clicks Show Preview
-    iframe.src = RESUME_PDF_URL;
-    document.getElementById('resume-dl-btn').href = RESUME_PDF_URL;
-    document.getElementById('resume-toolbar-dl').href = RESUME_PDF_URL;
-    document.getElementById('resume-toolbar-dl').target = '_blank';
-    document.getElementById('resume-toolbar-dl').removeAttribute('download');
-    document.getElementById('resume-toolbar-dl').textContent = 'Open in new tab ↗';
-  }
-
   function toggleResumePreview() {
     const iframe = document.getElementById('resume-iframe');
     const placeholder = document.getElementById('resume-placeholder');
     const label = document.getElementById('preview-label');
-    const icon = document.getElementById('preview-icon');
-
-    if (!RESUME_PDF_URL) {
-      placeholder.querySelector('p').style.color = 'var(--accent)';
-      return;
-    }
-
     previewOpen = !previewOpen;
     if (previewOpen) {
-      iframe.style.display = 'block';
+      iframe.classList.remove('resume-hidden');
       placeholder.style.display = 'none';
       label.textContent = 'Hide Preview';
-      icon.innerHTML = '<path d="M1 1l10 10M11 1L1 11"/>';
-      // smooth scroll to viewer
       document.getElementById('resume-viewer-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      iframe.style.display = 'none';
+      iframe.classList.add('resume-hidden');
       placeholder.style.display = 'flex';
       label.textContent = 'Show Preview';
-      icon.innerHTML = '<circle cx="6" cy="6" r="2.5"/><path d="M1 6s2-4 5-4 5 4 5 4-2 4-5 4-5-4-5-4z"/>';
     }
   }
 
-  initResume();
-
-  /* ── SCROLL REVEAL ── */
+  // SCROLL REVEAL
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; observer.unobserve(entry.target); }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.card, .viewer-frame-wrap, .video-wrap, .gallery-img, .article-item, .resume-meta-card, .resume-viewer-wrap').forEach(el => {
+  document.querySelectorAll('.card, .viewer-frame-wrap, .video-wrap, .drone-photo, .article-item, .resume-meta-card, .resume-viewer-wrap, .pcb-media').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(16px)';
     el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
