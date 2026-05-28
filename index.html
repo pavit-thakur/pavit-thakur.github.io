@@ -372,60 +372,14 @@
     </div>
   </div>
 
-  <!-- Photo gallery from the PDF -->
-  <p style="font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1rem;">Build Photo Log</p>
-  <div class="drone-gallery" id="drone-gallery">
-    <!-- Photos extracted from PDF pages 3-9 as descriptions; using PDF page screenshots -->
-    <div class="drone-photo" onclick="openDronePhoto(0)" style="background:#e8e4de; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Parts & Assembly</p>
-      </div>
-    </div>
-    <div class="drone-photo" onclick="openDronePhoto(1)" style="background:#e0dcd6; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">FC Stack</p>
-      </div>
-    </div>
-    <div class="drone-photo" onclick="openDronePhoto(2)" style="background:#e4e0da; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Soldering</p>
-      </div>
-    </div>
-    <div class="drone-photo" onclick="openDronePhoto(3)" style="background:#dcd8d2; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Claw Mechanism</p>
-      </div>
-    </div>
-    <div class="drone-photo" onclick="openDronePhoto(4)" style="background:#e2deda; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Betaflight Config</p>
-      </div>
-    </div>
-    <div class="drone-photo" onclick="openDronePhoto(5)" style="background:#dedad4; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Final Build</p>
-      </div>
-    </div>
-    <div class="drone-photo" onclick="openDronePhoto(6)" style="background:#e0dcd8; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Flight Testing</p>
-      </div>
-    </div>
-    <div class="drone-photo" onclick="openDronePhoto(7)" style="background:#d8d4d0; display:flex; align-items:center; justify-content:center;">
-      <div style="text-align:center; padding:1rem;">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#aaa" stroke-width="1.5"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="11" cy="11" r="3"/><path d="M3 22l7-7 5 5 4-4 9 9"/></svg>
-        <p style="font-family: var(--mono); font-size: 0.6rem; color: #bbb; margin-top: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;">Competition</p>
-      </div>
+  <!-- Single final build photo -->
+  <div style="border: 1px solid var(--rule); overflow: hidden; cursor: pointer; max-width: 700px;" onclick="openHackPhoto('drone_final.jpg', 'Final drone build — FPV quad with 3D-printed propeller guards, stilts, and claw mechanism')">
+    <img src="drone_final.jpg" alt="Final FPV drone build with 3D-printed guards and claw" style="width:100%; display:block; transition: transform 0.4s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+    <div style="padding: 0.8rem 1.2rem; border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between;">
+      <span style="font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">Final Build — FPV Quad with 3D-Printed Guards, Stilts & Claw</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
     </div>
   </div>
-  <p style="font-family: var(--mono); font-size: 0.62rem; color: var(--ink-faint); margin-top: 1rem; letter-spacing: 0.06em;">↑ Replace placeholders: upload real build photos to your GitHub repo and update the <code>src</code> attributes in the HTML. Full build log is in the PDF above.</p>
 </section>
 
 <!-- 04 HOWDYHACK HACKATHON -->
