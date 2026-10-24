@@ -385,23 +385,23 @@
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.6rem;">
           <!-- Layout screenshot -->
-          <div onclick="openHackPhoto('avionics_layout.png', 'Avionics PCB — 2D Layout')" style="cursor:pointer; border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.2s;" class="card" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-            <div style="height: 140px; background: #f0ede8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; border-bottom: 1px solid var(--rule);">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#bbb" stroke-width="1.2"><rect x="3" y="3" width="26" height="26" rx="1"/><rect x="8" y="8" width="6" height="6"/><rect x="18" y="8" width="6" height="6"/><rect x="8" y="18" width="16" height="6"/><line x1="14" y1="11" x2="18" y2="11"/></svg>
-              <p style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ccc;">Upload avionics_layout.png</p>
+          <div style="border: 1px solid var(--rule); overflow: hidden;">
+            <div style="cursor:pointer;" onclick="openHackPhoto('avionics_layout.png', 'Avionics PCB — 2D Layout')">
+              <img src="avionics_layout.png" alt="Avionics PCB 2D Layout" style="width:100%; height:180px; object-fit:cover; display:block; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
             </div>
-            <div style="padding: 0.6rem 0.9rem;">
+            <div style="padding: 0.6rem 0.9rem; border-top: 1px solid var(--rule); display:flex; align-items:center; justify-content:space-between;">
               <p style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">2D Layout</p>
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
             </div>
           </div>
           <!-- 3D screenshot -->
-          <div onclick="openHackPhoto('avionics_3d.png', 'Avionics PCB — 3D View')" style="cursor:pointer; border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.2s;" class="card" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
-            <div style="height: 140px; background: #eaeef5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; border-bottom: 1px solid var(--rule);">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#bbb" stroke-width="1.2"><path d="M16 4L4 10v12l12 6 12-6V10L16 4z"/><path d="M4 10l12 6 12-6"/><line x1="16" y1="16" x2="16" y2="28"/></svg>
-              <p style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ccc;">Upload avionics_3d.png</p>
+          <div style="border: 1px solid var(--rule); overflow: hidden;">
+            <div style="cursor:pointer;" onclick="openHackPhoto('avionics_3d.png', 'Avionics PCB — 3D View')">
+              <img src="avionics_3d.png" alt="Avionics PCB 3D View" style="width:100%; height:180px; object-fit:cover; display:block; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
             </div>
-            <div style="padding: 0.6rem 0.9rem;">
+            <div style="padding: 0.6rem 0.9rem; border-top: 1px solid var(--rule); display:flex; align-items:center; justify-content:space-between;">
               <p style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">3D View</p>
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"><path d="M2 10L10 2M4 2h6v6"/></svg>
             </div>
           </div>
         </div>
