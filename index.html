@@ -192,9 +192,11 @@
 <nav>
   <a href="#" class="nav-logo">PT / Portfolio</a>
   <ul class="nav-links">
-    <li><a href="#pcb">PCB Design</a></li>
+    <li><a href="#pcb">Solar Car PCB</a></li>
+    <li><a href="#avionics">Avionics PCB</a></li>
+    <li><a href="#altitut">Internship</a></li>
     <li><a href="#ic-design">IC Design</a></li>
-    <li><a href="#drone">UAV Project</a></li>
+    <li><a href="#drone">UAV</a></li>
     <li><a href="#hackathon">HowdyHack</a></li>
     <li><a href="#press">Solar EV</a></li>
     <li><a href="#resume">Résumé</a></li>
@@ -206,12 +208,13 @@
 <section class="hero">
   <p class="hero-tag">Electrical Engineering Design Portfolio</p>
   <h1>Pavit<br><em>Thakur</em></h1>
-  <p class="hero-sub">Texas A&M EE — building from silicon to system. PCB design, custom ASICs, FPV drones, and embedded systems.</p>
+  <p class="hero-sub">Texas A&M EE — building from silicon to system. PCB design, custom ASICs, avionics, hardware internships, and embedded systems.</p>
   <div class="hero-pills">
     <span class="hero-pill">Altium Designer</span>
     <span class="hero-pill">SKY130 ASIC</span>
     <span class="hero-pill">Verilog HDL</span>
-    <span class="hero-pill">FPV / UAV</span>
+    <span class="hero-pill">4-Layer PCB</span>
+    <span class="hero-pill">STM32 / Avionics</span>
     <span class="hero-pill">Texas A&M — BS EE</span>
     <span class="hero-pill">Dean's Honor Roll</span>
   </div>
@@ -225,8 +228,8 @@
 <!-- 01 PCB DESIGN -->
 <section id="pcb">
   <p class="section-label">01</p>
-  <h2 class="section-title">PCB & Schematic Design</h2>
-  <p class="section-desc">Designed and soldered a 2-layer Distributed Control Systems PCB for Texas A&M Solar Car Racing — integrating CAN-BUS communication, throttle, SPI, cruise control, and lighting IO in Altium Designer.</p>
+  <h2 class="section-title">Solar Car PCB Design</h2>
+  <p class="section-desc">As Power Distribution Lead and Co-Chief Electrical for Texas A&M Solar Car Racing — designed and soldered the 2-layer Driver Control Systems PCB, built a 96%-efficient 12-5V buck converter, and established CAN-BUS telemetry on the MITSUBA motor controller. Led the car through full electrical scrutineering at FSGP 2026.</p>
 
   <div class="pcb-grid">
     <!-- Schematic card -->
@@ -238,15 +241,17 @@
         </div>
       </div>
       <div class="card-body">
-        <p class="card-index">Project 01a — Altium Designer</p>
+        <p class="card-index">Project 01a — Power Distribution Lead · Solar Car Racing</p>
         <h3 class="card-title">DCS Board Schematic</h3>
-        <p class="card-desc">Full schematic for the Solar Car Distributed Control Systems board — NUCLEO-F303K8 microcontroller, CAN-BUS transceiver (MCP2562), NMOSFETs for load switching, oscillating light timer circuit, throttle conditioning, and SPI header.</p>
+        <p class="card-desc">Full schematic for the Driver Control Systems board — NUCLEO-F303K8 MCU, CAN-BUS transceiver (MCP2562), NMOSFETs for load switching, TLC555CP oscillating light timer, throttle conditioning, and SPI header. Paired with a synchronous 12-5V buck converter rated for 4A at 96% peak efficiency.</p>
         <div class="card-tags">
           <span class="tag">Altium Designer</span>
           <span class="tag">STM32 / NUCLEO</span>
           <span class="tag">CAN-BUS</span>
+          <span class="tag">Sync Buck Converter</span>
           <span class="tag">TLC555CP Timer</span>
           <span class="tag">NMOSFET</span>
+          <span class="tag">FSGP 2026</span>
         </div>
         <a href="#" class="card-link" onclick="openSchematic(); return false;">
           View Full Schematic
@@ -279,9 +284,236 @@
   </div>
 </section>
 
-<!-- 02 ASIC / GDS VIEWER -->
-<section id="ic-design">
+<!-- 02 AVIONICS PCB -->
+<section id="avionics">
   <p class="section-label">02</p>
+  <h2 class="section-title">Avionics Telemetry PCB</h2>
+  <p class="section-desc">Engineered a 4-layer live telemetry board for Texas A&M Sounding Rocketry — built around an STM32 MCU with a full sensor suite, Quad-SPI flash logging, and a power delivery network hardened for high-vibration flight environments.</p>
+
+  <div class="viewer-layout">
+    <!-- Left: feature breakdown -->
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+      <!-- PDN card -->
+      <div class="card">
+        <div class="card-body">
+          <p class="card-index">Subsystem — Power Delivery Network</p>
+          <h3 class="card-title" style="font-size: 1.2rem;">Power Delivery & Protection</h3>
+          <p class="card-desc" style="margin-bottom:0;">1A eFuse with overcurrent shutdown, USB-C connectivity for programming and power, and low-inductance decoupling capacitors placed for high-vibration immunity. PDN designed to stay stable through Mach-speed motor vibration profiles.</p>
+        </div>
+      </div>
+
+      <!-- Sensor subsystem card -->
+      <div class="card">
+        <div class="card-body">
+          <p class="card-index">Subsystem — Sensor Array</p>
+          <h3 class="card-title" style="font-size: 1.2rem;">Multi-Sensor Flight Suite</h3>
+          <p class="card-desc" style="margin-bottom: 1rem;">Full sensor stack interfaced to the STM32 MCU:</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 0;">
+            <div style="background: var(--bg-card); padding: 0.8rem 1rem;">
+              <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">IMU</p>
+              <p style="font-size: 0.82rem; color: var(--ink-soft);">6-DOF inertial measurement unit — accel + gyro</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 0.8rem 1rem;">
+              <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">High-G Accel</p>
+              <p style="font-size: 0.82rem; color: var(--ink-soft);">Dedicated high-G accelerometer for launch events</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 0.8rem 1rem; border-top: 1px solid var(--rule);">
+              <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">Barometric Altimeter</p>
+              <p style="font-size: 0.82rem; color: var(--ink-soft);">Real-time altitude during ascent and descent</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 0.8rem 1rem; border-top: 1px solid var(--rule);">
+              <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">GNSS</p>
+              <p style="font-size: 0.82rem; color: var(--ink-soft);">Multi-constellation GPS for position tracking</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flash logging card -->
+      <div class="card">
+        <div class="card-body">
+          <p class="card-index">Subsystem — Data Logging</p>
+          <h3 class="card-title" style="font-size: 1.2rem;">1 Gbit Quad-SPI Flash</h3>
+          <p class="card-desc" style="margin-bottom:0;">Dual-die Quad-SPI Flash memory for non-volatile flight data logging — captures full sensor telemetry across the entire flight envelope. High-speed QSPI interface keeps write latency low enough to log at full sensor sample rates.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: summary card -->
+    <div class="card" style="height: fit-content;">
+      <div class="card-body">
+        <p class="card-index">Project 02 — Texas A&M Sounding Rocketry</p>
+        <h3 class="card-title">4-Layer Live Telemetry PCB</h3>
+        <p class="card-desc">Custom avionics board designed for sounding rocket flight — from power-on through apogee and recovery. The 4-layer stackup provides dedicated power and ground planes for EMI isolation, with signal layers optimized for high-speed SPI and UART interfaces.</p>
+        <div class="card-tags">
+          <span class="tag">4-Layer PCB</span>
+          <span class="tag">STM32 MCU</span>
+          <span class="tag">Altium Designer</span>
+          <span class="tag">1A eFuse</span>
+          <span class="tag">USB-C</span>
+          <span class="tag">6-DOF IMU</span>
+          <span class="tag">Multi-GNSS</span>
+          <span class="tag">Quad-SPI Flash</span>
+          <span class="tag">High-Vibration</span>
+        </div>
+
+        <!-- Stackup visual -->
+        <div style="border: 1px solid var(--rule); margin-bottom: 1.6rem; overflow: hidden;">
+          <div style="padding: 0.6rem 1rem; background: var(--bg); border-bottom: 1px solid var(--rule);">
+            <p style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);">4-Layer Stackup</p>
+          </div>
+          <div style="padding: 0.5rem 0;">
+            <div style="padding: 0.45rem 1rem; border-left: 4px solid #c8a830; margin: 2px 0; display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-family: var(--mono); font-size: 0.7rem;">L1 — Signal (Top)</span>
+              <span style="font-family: var(--mono); font-size: 0.62rem; color: var(--ink-faint);">Components / routing</span>
+            </div>
+            <div style="padding: 0.45rem 1rem; border-left: 4px solid #5a8a5a; margin: 2px 0; display: flex; align-items: center; justify-content: space-between; background: #f7fbf7;">
+              <span style="font-family: var(--mono); font-size: 0.7rem;">L2 — Ground Plane</span>
+              <span style="font-family: var(--mono); font-size: 0.62rem; color: var(--ink-faint);">EMI isolation</span>
+            </div>
+            <div style="padding: 0.45rem 1rem; border-left: 4px solid #5a6a8a; margin: 2px 0; display: flex; align-items: center; justify-content: space-between; background: #f7f8fb;">
+              <span style="font-family: var(--mono); font-size: 0.7rem;">L3 — Power Plane</span>
+              <span style="font-family: var(--mono); font-size: 0.62rem; color: var(--ink-faint);">PDN / decoupling</span>
+            </div>
+            <div style="padding: 0.45rem 1rem; border-left: 4px solid #c8a830; margin: 2px 0; display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-family: var(--mono); font-size: 0.7rem;">L4 — Signal (Bottom)</span>
+              <span style="font-family: var(--mono); font-size: 0.62rem; color: var(--ink-faint);">High-speed SPI / UART</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.6rem;">
+          <!-- Layout screenshot -->
+          <div onclick="openHackPhoto('avionics_layout.png', 'Avionics PCB — 2D Layout')" style="cursor:pointer; border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.2s;" class="card" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
+            <div style="height: 140px; background: #f0ede8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; border-bottom: 1px solid var(--rule);">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#bbb" stroke-width="1.2"><rect x="3" y="3" width="26" height="26" rx="1"/><rect x="8" y="8" width="6" height="6"/><rect x="18" y="8" width="6" height="6"/><rect x="8" y="18" width="16" height="6"/><line x1="14" y1="11" x2="18" y2="11"/></svg>
+              <p style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ccc;">Upload avionics_layout.png</p>
+            </div>
+            <div style="padding: 0.6rem 0.9rem;">
+              <p style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">2D Layout</p>
+            </div>
+          </div>
+          <!-- 3D screenshot -->
+          <div onclick="openHackPhoto('avionics_3d.png', 'Avionics PCB — 3D View')" style="cursor:pointer; border: 1px solid var(--rule); overflow: hidden; transition: box-shadow 0.2s;" class="card" onmouseover="this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow='none'">
+            <div style="height: 140px; background: #eaeef5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; border-bottom: 1px solid var(--rule);">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#bbb" stroke-width="1.2"><path d="M16 4L4 10v12l12 6 12-6V10L16 4z"/><path d="M4 10l12 6 12-6"/><line x1="16" y1="16" x2="16" y2="28"/></svg>
+              <p style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ccc;">Upload avionics_3d.png</p>
+            </div>
+            <div style="padding: 0.6rem 0.9rem;">
+              <p style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">3D View</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: #f2f6ff; border: 1px solid #c8d8f0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3a6abf" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <div>
+            <p style="font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: #3a6abf;">Texas A&M Sounding Rocketry</p>
+            <p style="font-size: 0.82rem; color: var(--ink-soft);">Avionics Engineer — Aug 2026 – Present</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 ALTITUT INTERNSHIP -->
+<section id="altitut">
+  <p class="section-label">03</p>
+  <h2 class="section-title">Hardware Engineering Internship</h2>
+  <p class="section-desc">Summer 2026 at Altitut — architected an edge-AI hardware platform for real-time video processing and designed a Raspberry Pi CM5 control board PCB from scratch.</p>
+
+  <div class="pcb-grid">
+
+    <!-- Role overview card -->
+    <div class="card">
+      <div class="card-body" style="padding-top: 2.4rem;">
+        <p class="card-index">Altitut · Hardware Engineering Intern · June – Aug 2026</p>
+        <h3 class="card-title">Edge-AI Hardware Platform</h3>
+        <p class="card-desc">Architected a scalable edge-AI platform for real-time video processing — defining the core SoC, power management IC selection, and peripheral schematics to locally host the Gemma 4 12B Unified AI Model on-device without cloud dependency.</p>
+        <div class="card-tags">
+          <span class="tag">Rockchip SoC</span>
+          <span class="tag">Edge AI</span>
+          <span class="tag">Gemma 4 12B</span>
+          <span class="tag">Power Management</span>
+          <span class="tag">Schematic Design</span>
+          <span class="tag">Real-Time Video</span>
+        </div>
+        <div style="padding: 1.2rem; background: var(--bg); border: 1px solid var(--rule); margin-bottom: 1.6rem;">
+          <p style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.8rem;">Platform Architecture</p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <div style="width: 8px; height: 8px; background: var(--accent); flex-shrink: 0;"></div>
+              <p style="font-size: 0.84rem; color: var(--ink-soft);">Rockchip SoC — core compute for AI inference</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <div style="width: 8px; height: 8px; background: var(--accent); flex-shrink: 0;"></div>
+              <p style="font-size: 0.84rem; color: var(--ink-soft);">PMIC selection and power sequencing design</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <div style="width: 8px; height: 8px; background: var(--accent); flex-shrink: 0;"></div>
+              <p style="font-size: 0.84rem; color: var(--ink-soft);">Peripheral schematics for video I/O and connectivity</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.8rem;">
+              <div style="width: 8px; height: 8px; background: var(--accent); flex-shrink: 0;"></div>
+              <p style="font-size: 0.84rem; color: var(--ink-soft);">Local hosting of Gemma 4 12B — no cloud required</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CM5 PCB card -->
+    <div class="card">
+      <div class="card-body" style="padding-top: 2.4rem;">
+        <p class="card-index">Altitut · PCB Design · June – Aug 2026</p>
+        <h3 class="card-title">Raspberry Pi CM5 Control Board</h3>
+        <p class="card-desc">Designed and routed a 2-layer carrier board for the Raspberry Pi Compute Module 5 — featuring impedance-controlled differential pairs for MIPI and USB-C flashing, plus integrated battery protection and charging circuitry.</p>
+        <div class="card-tags">
+          <span class="tag">Raspberry Pi CM5</span>
+          <span class="tag">2-Layer PCB</span>
+          <span class="tag">90Ω Diff Pairs</span>
+          <span class="tag">MIPI Interface</span>
+          <span class="tag">USB-C Flashing</span>
+          <span class="tag">Battery Protection</span>
+          <span class="tag">Altium Designer</span>
+        </div>
+
+        <!-- Key design callouts -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 1.6rem;">
+          <div style="background: var(--bg-card); padding: 0.9rem 1rem;">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">Impedance Control</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">90 Ω</p>
+            <p style="font-size: 0.75rem; color: var(--ink-faint);">MIPI / USB-C diff pairs</p>
+          </div>
+          <div style="background: var(--bg-card); padding: 0.9rem 1rem;">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">Interface</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">USB-C</p>
+            <p style="font-size: 0.75rem; color: var(--ink-faint);">Firmware flash + power</p>
+          </div>
+          <div style="background: var(--bg-card); padding: 0.9rem 1rem; border-top: 1px solid var(--rule);">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">Battery Circuit</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">Protect + Charge</p>
+            <p style="font-size: 0.75rem; color: var(--ink-faint);">Integrated on-board</p>
+          </div>
+          <div style="background: var(--bg-card); padding: 0.9rem 1rem; border-top: 1px solid var(--rule);">
+            <p style="font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;">Compute Module</p>
+            <p style="font-family: var(--mono); font-size: 1rem; color: var(--ink);">RPi CM5</p>
+            <p style="font-size: 0.75rem; color: var(--ink-faint);">High-density connector</p>
+          </div>
+        </div>
+
+        <p style="font-family: var(--mono); font-size: 0.65rem; color: var(--ink-faint); letter-spacing: 0.06em;">📷 Upload your CM5 board layout image to show it here.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 04 ASIC / GDS VIEWER -->
+<section id="ic-design">
+  <p class="section-label">04</p>
   <h2 class="section-title">Integrated Circuit Design</h2>
   <p class="section-desc">Custom ASIC submitted to TinyTapeout 09 — designed at MIT Beaver Works Summer Institute. Implemented in SKY130 open-source PDK with a 30% power reduction through custom Verilog SPI design. Explore the live GDS geometry below.</p>
 
@@ -314,7 +546,7 @@
 
 <!-- 03 DRONE / UAV -->
 <section id="drone">
-  <p class="section-label">03</p>
+  <p class="section-label">05</p>
   <h2 class="section-title">Drone Challenge (UAV)</h2>
   <p class="section-desc">Designed and built a custom FPV racing drone from scratch for the TSA Texas State Competition — earning 1st place. Integrated flight controller stack, ESC, VTX, FPV camera, 3D-printed claw mechanism, and custom Arduino-controlled gripper system.</p>
 
@@ -384,7 +616,7 @@
 
 <!-- 04 HOWDYHACK HACKATHON -->
 <section id="hackathon">
-  <p class="section-label">04</p>
+  <p class="section-label">06</p>
   <h2 class="section-title">HowdyHack 2025</h2>
   <p class="section-desc">Built a computer vision-controlled skating game in under 24 hours at Texas A&M's HowdyHack hackathon — winning <strong>1st place overall</strong> out of all competing teams.</p>
 
@@ -452,7 +684,7 @@
 
 <!-- 05 SOLAR EV CHARGER -->
 <section id="press">
-  <p class="section-label">05</p>
+  <p class="section-label">07</p>
   <h2 class="section-title">Solar-Powered EV Charger</h2>
   <p class="section-desc">Engineered a solar-powered Tesla Level 2 EV charger in a three-person team — integrating eight 240W solar panels, a 48V battery system, an AC/DC inverter, and a 2500W charge controller delivering 2.4 kWh of energy. Coordinated local sponsor outreach resulting in a $4,000 technical supply donation. Featured by Fort Bend ISD and on Instagram.</p>
 
@@ -537,7 +769,7 @@
 
 <!-- 05 RÉSUMÉ -->
 <section id="resume">
-  <p class="section-label">06</p>
+  <p class="section-label">08</p>
   <h2 class="section-title">Résumé</h2>
   <p class="section-desc">Electrical engineering background spanning IC design, PCB layout, embedded systems, FPV drones, and competitive robotics.</p>
 
